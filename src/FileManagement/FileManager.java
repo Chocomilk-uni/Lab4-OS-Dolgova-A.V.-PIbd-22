@@ -82,4 +82,17 @@ public class FileManager {
             }
         }
     }
+
+    /*
+    Метод для получения списка кластеров файла.
+    */
+    public List<MemoryCluster> getFileClusters(File file) {
+        List<MemoryCluster> clustersList = new LinkedList<>();
+        MemoryCluster cluster = file.getCluster();
+        while (cluster != null) {
+            clustersList.add(cluster);
+            cluster = cluster.getNextCluster();
+        }
+        return clustersList;
+    }
 }
